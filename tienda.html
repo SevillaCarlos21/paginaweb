@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Materiales - ConstruGlobal</title>
+    <link rel="stylesheet" href="estilos-base.css">
+</head>
+<body onload="renderizarTienda()">
+    <nav class="navbar-pro sticky">
+        <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer">CONSTRU<span>GLOBAL</span></div>
+        <div class="nav-right">
+            <a href="carrito.html" class="cart-widget">
+                🛒 Mi Pedido (<span id="cart-count">0</span>)
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="section-header">
+            <h2>Materiales de Construcción</h2>
+            <p>Añade los suministros necesarios para tu presupuesto.</p>
+        </header>
+        
+        <div class="product-grid" id="lista-productos">
+            <!-- Cargado por JS -->
+        </div>
+    </main>
+
+    <script src="sistema-logica.js"></script>
+</body>
+</html>
