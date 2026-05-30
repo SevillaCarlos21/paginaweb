@@ -5,7 +5,9 @@ const PRODUCTOS = [
     { id: 3, nombre: "Bulto Cal Hidratada", precio: 145.00, img: "🌫️" },
     { id: 4, nombre: "Block de Concreto (Pza)", precio: 14.50, img: "🧱" },
     { id: 5, nombre: "Arena de Mina (m3)", precio: 460.00, img: "⏳" },
-    { id: 6, nombre: "Grava Triturada (m3)", precio: 510.00, img: "🪨" }
+    { id: 6, nombre: "Grava Triturada (m3)", precio: 510.00, img: "🪨" },
+      { id: 7, nombre: "Ladrillo rojo (Pza)", precio: 15.40, img: "🧱" },
+    { id: 8, nombre: "Martillo Cabeza Concreto (Pza)", precio: 70.00, img: "🔨" }
 ];
 
 // Persistencia de datos
@@ -98,4 +100,16 @@ function confirmarPedido() {
     carrito = [];
     localStorage.removeItem('cart_data');
     window.location.href = "index.html";
+}
+function buscarProducto() {
+    const texto = document
+        .getElementById("busqueda")
+        .value
+        .toLowerCase();
+
+    const filtrados = PRODUCTOS.filter(p =>
+        p.nombre.toLowerCase().includes(texto)
+    );
+
+    mostrarProductos(filtrados);
 }
