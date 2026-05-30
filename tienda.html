@@ -27,5 +27,25 @@
     </main>
 
     <script src="sistema-logica.js"></script>
+    <div style="margin: 20px 0; display: flex; gap: 10px;">
+        <input
+            type="text"
+            id="busqueda"
+            placeholder="Buscar material..."
+            style="flex:1; padding:10px; border-radius:5px; border:1px solid #ccc;"
+        >
+        <button
+            onclick="buscarProducto()"
+            class="btn-add"
+            style="width:auto; padding:10px 20px;"
+        >
+            Buscar
+        </button>
+    </div>
+
+    <div class="product-grid" id="lista-productos">
+        <!-- Cargado por JS -->
+    </div>
+</main>
 </body>
 </html>
