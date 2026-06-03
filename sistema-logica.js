@@ -112,4 +112,5 @@ function buscarProducto() {
     );
 
     mostrarProductos(filtrados);
+
 }
