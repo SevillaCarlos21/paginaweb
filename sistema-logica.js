@@ -6,8 +6,9 @@ const PRODUCTOS = [
     { id: 4, nombre: "Block de Concreto (Pza)", precio: 14.50, img: "🧱" },
     { id: 5, nombre: "Arena de Mina (m3)", precio: 460.00, img: "⏳" },
     { id: 6, nombre: "Grava Triturada (m3)", precio: 510.00, img: "🪨" },
-      { id: 7, nombre: "Ladrillo rojo (Pza)", precio: 15.40, img: "🧱" },
-    { id: 8, nombre: "Martillo Cabeza Concreto (Pza)", precio: 70.00, img: "🔨" }
+    { id: 7, nombre: "Ladrillo rojo (Pza)", precio: 15.40, img: "🧱" },
+    { id: 8, nombre: "Martillo Cabeza Concreto (Pza)", precio: 70.00, img: "🔨" },
+    { id: 9, nombre: "Cinta Métrica 5m (Pza)", precio: 35.00, img: "📏" }
 ];
 
 // Persistencia de datos
