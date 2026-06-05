@@ -1,7 +1,12 @@
 :root {
+    /*cambio de fondo color */
     --primary: #1e3a8a;
     --accent: #d97706;
+<<<<<<< HEAD
     --bg: #0f172a;
+=======
+    --bg: #0AF540;
+>>>>>>> be4c10b4337f466578374ced26c4b5f14f223381
     --dark: #0f172a;
     --white: #ffffff;
 }
