@@ -6,8 +6,26 @@ const PRODUCTOS = [
     { id: 4, nombre: "Block de Concreto (Pza)", precio: 14.50, img: "🧱" },
     { id: 5, nombre: "Arena de Mina (m3)", precio: 460.00, img: "⏳" },
     { id: 6, nombre: "Grava Triturada (m3)", precio: 510.00, img: "🪨" },
-      { id: 7, nombre: "Ladrillo rojo (Pza)", precio: 15.40, img: "🧱" },
-    { id: 8, nombre: "Martillo Cabeza Concreto (Pza)", precio: 70.00, img: "🔨" }
+    { id: 7, nombre: "Ladrillo rojo (Pza)", precio: 15.40, img: "🧱" },
+    { id: 8, nombre: "Martillo Cabeza Concreto (Pza)", precio: 70.00, img: "🔨" },
+    { id: 9, nombre: "Yeso", precio: 120.00, img: "☁️" },
+    { id: 10, nombre: "Madera de Pino", precio: 350.00, img: "🪵" },
+    { id: 11, nombre: "Tubo PVC", precio: 95.00, img: "🚰" },
+    { id: 12, nombre: "Cable Eléctrico", precio: 180.00, img: "🔌" },
+    { id: 13, nombre: "Pintura Blanca", precio: 280.00, img: "🎨" },
+    { id: 14, nombre: "Impermeabilizante", precio: 850.00, img: "☔" },
+    { id: 15, nombre: "Teja", precio: 28.00, img: "🏠" },
+    { id: 16, nombre: "Malla Electrosoldada", precio: 650.00, img: "🕸️" },
+    { id: 17, nombre: "Alambre Recocido", precio: 75.00, img: "🧵" },
+    { id: 18, nombre: "Clavos", precio: 45.00, img: "📌" },
+    { id: 19, nombre: "Tornillos", precio: 55.00, img: "🔩" },
+    { id: 20, nombre: "Martillo", precio: 70.00, img: "🔨" },
+    { id: 21, nombre: "Cinta Métrica", precio: 35.00, img: "📏" },
+    { id: 22, nombre: "Nivel", precio: 120.00, img: "📐" },
+    { id: 23, nombre: "Pala", precio: 180.00, img: "⛏️" },
+    { id: 24, nombre: "Carretilla", precio: 950.00, img: "🛒" },
+    { id: 25, nombre: "Vidrio", precio: 450.00, img: "🪟" },
+    { id: 26, nombre: "Puerta Metálica", precio: 2800.00, img: "🚪" }
 ];
 
 // Persistencia de datos
