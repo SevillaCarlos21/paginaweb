@@ -25,7 +25,8 @@ const PRODUCTOS = [
     { id: 23, nombre: "Pala", precio: 180.00, img: "⛏️" },
     { id: 24, nombre: "Carretilla", precio: 950.00, img: "🛒" },
     { id: 25, nombre: "Vidrio", precio: 450.00, img: "🪟" },
-    { id: 26, nombre: "Puerta Metálica", precio: 2800.00, img: "🚪" }
+    { id: 26, nombre: "Puerta Metálica", precio: 2800.00, img: "🚪" },
+    { id: 9, nombre: "Cinta Métrica 5m (Pza)", precio: 35.00, img: "📏" }
 ];
 
 // Persistencia de datos
