@@ -39,7 +39,7 @@ function irATienda() {
 
 // Lógica de Tienda
 function renderizarTienda() {
-    const listado = document.getElementById('lista-productos');
+   /* const listado = document.getElementById('lista-productos');
     if (!listado) return;
 
     listado.innerHTML = PRODUCTOS.map(p => `
@@ -51,7 +51,11 @@ function renderizarTienda() {
             <button class="btn-add" onclick="agregar(${p.id})">Añadir al Pedido</button>
         </div>
     `).join('');
+    actualizarNotificacion();*/
+    
+    mostrarProductos(PRODUCTOS);
     actualizarNotificacion();
+
 }
 
 function agregar(id) {
@@ -132,4 +136,25 @@ function buscarProducto() {
 
     mostrarProductos(filtrados);
 
+}
+function mostrarProductos(productos) {
+    const listado = document.getElementById('lista-productos');
+
+    listado.innerHTML = productos.map(p => `
+        <div class="card-producto">
+            <div style="font-size: 3.5rem; margin-bottom: 10px;">${p.img}</div>
+            <h3>${p.nombre}</h3>
+            <p style="color: #64748b; margin: 5px 0;">Código: 00${p.id}</p>
+            <h4 style="color: #1e3a8a; font-size: 1.4rem;">
+                $${p.precio.toFixed(2)}
+            </h4>
+            <button class="btn-add" onclick="agregar(${p.id})">
+                Añadir al Pedido
+            </button>
+        </div>
+    `).join('');
+
+    if (productos.length === 0) {
+        listado.innerHTML = "<p>No se encontraron productos.</p>";
+    }
 }
