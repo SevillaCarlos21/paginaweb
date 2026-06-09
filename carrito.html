@@ -3,30 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resumen de Compra | ConstruGlobal</title>
-    <link rel="stylesheet" href="estilos-base.css">
+    <title>ConstruGlobal - Resumen de Pedido</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            background-color: #0f172a; /* Mismo fondo oscuro de la administración */
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid #3b82f6;
+        }
+        .panel-oscuro {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+        }
+        /* Estilos personalizados para los inputs de texto */
+        .input-custom {
+            background-color: #0f172a !important;
+            border: 1px solid #475569 !important;
+            color: #f8fafc !important;
+            transition: border-color 0.2s;
+        }
+        .input-custom:focus {
+            border-color: #d97706 !important;
+            outline: none;
+        }
+    </style>
 </head>
-<body onload="renderizarCarrito()">
+<body onload="inicializarCarrito()">
 
-    <nav class="navbar-pro sticky">
-        <a href="tienda.html" class="back-btn">⬅️ Volver al Catálogo</a>
-        <div class="logo">RESUMEN DE <span>COMPRA</span></div>
-    </nav>
-
-    <main class="container cart-container">
-        <div id="lista-carrito" class="cart-items-list">
+    <header class="header-bg shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-600 p-2 rounded-lg text-white">
+                    <i data-lucide="gavel" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black tracking-wider text-white">CONSTRU<span class="text-amber-500">GLOBAL</span></span>
             </div>
 
-        <aside class="cart-checkout">
-            <div class="summary-box">
-                <h3>Total a Pagar</h3>
-                <div class="total-amount">$<span id="total-precio">0.00</span></div>
-                <button onclick="confirmarPedido()" class="btn-confirm">Confirmar y Enviar Pedido</button>
+            <div>
+                <a href="tienda.html" class="flex items-center space-x-2 text-sm font-semibold text-slate-300 hover:text-amber-500 transition">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>Volver al Catálogo</span>
+                </a>
             </div>
-        </aside>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <h1 class="text-3xl font-extrabold text-white mb-8 tracking-tight">
+            Resumen de <span class="text-amber-500">Compra</span>
+        </h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-4">
+                <div class="panel-oscuro p-6">
+                    <h2 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="text-amber-500 w-5 h-5"></i>
+                        Artículos en tu Pedido
+                    </h2>
+                    
+                    <div id="contenedor-items-carrito" class="space-y-3 min-h-[150px]">
+                        </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="panel-oscuro p-6 shadow-lg">
+                    <h2 class="text-lg font-bold text-slate-200 mb-4 flex items-center gap-2">
+                        <i data-lucide="truck" class="text-amber-500 w-5 h-5"></i>
+                        Datos de Entrega
+                    </h2>
+                    
+                    <form onsubmit="procesarCheckOut(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nombre Completo</label>
+                            <input type="text" id="checkout-nombre" required placeholder="Ej. Carlos Sevilla" 
+                                   class="w-full input-custom rounded-lg px-4 py-3 text-sm">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Dirección de Envío</label>
+                            <textarea id="checkout-direccion" required rows="3" placeholder="Calle, Número, Colonia y Municipio" 
+                                      class="w-full input-custom rounded-lg px-4 py-3 text-sm resize-none"></textarea>
+                        </div>
+
+                        <hr class="border-slate-700 my-4">
+
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm text-slate-400">
+                                <span>Subtotal:</span>
+                                <span id="resumen-subtotal" class="font-semibold text-slate-200">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm text-slate-400">
+                                <span>Envío:</span>
+                                <span class="font-semibold text-emerald-400">¡Gratis!</span>
+                            </div>
+                            <div class="flex justify-between text-lg font-bold text-white pt-2 border-t border-dashed border-slate-700">
+                                <span>Total a Pagar:</span>
+                                <span id="resumen-total" class="text-emerald-400">$0.00</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center space-x-2 mt-4 shadow-md">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span>Confirmar y Enviar Pedido</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
     </main>
 
+    <script>
+        lucide.createIcons();
+    </script>
+    
     <script src="sistema-logica.js"></script>
 </body>
 </html>
