@@ -3,254 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConstruGlobal - Soluciones Maestras en Infraestructura</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        /* Fondo principal corporativo */
-        body {
-            background-color: #0f172a; 
-            color: #e2e8f0; /* Cambiado a un gris mucho más claro para mejor lectura */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            -webkit-font-smoothing: antialiased; /* Suavizado para tipografía más nítida */
-        }
-
-        /* Títulos destacados */
-        h1, h2, h3, .text-white {
-            color: #ffffff !important; /* Blanco puro para contraste máximo */
-            font-weight: 800; /* Más peso para que se vean impactantes */
-        }
-
-        /* Párrafos y descripciones */
-        p {
-            color: #cbd5e1 !important; /* Gris claro de alta legibilidad */
-            font-weight: 450; /* Ligeramente más grueso que el estándar */
-            line-height: 1.75; /* Más espacio para que no se amontone el texto */
-        }
-
-        /* Tarjetas de contenido */
-        .card-caracteristica, .panel-oscuro, .ticket-card {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-        }
-
-        /* Ajuste para que el texto de las tarjetas resalte */
-        .card-caracteristica p {
-            color: #e2e8f0 !important;
-        }
-
-        /* Mejora de visibilidad en inputs */
-        input, textarea {
-            background-color: #0f172a !important;
-            border: 2px solid #475569 !important; /* Borde más grueso para marcar área */
-            color: #ffffff !important;
-            font-weight: 600;
-        }
-        
-        input::placeholder {
-            color: #94a3b8 !important; /* Placeholder visible pero diferenciado */
-        }
-    </style>
+    <title>ConstruGlobal | Expertos en Construcción</title>
+    <link rel="stylesheet" href="estilos-base.css">
 </head>
-<body class="min-h-screen flex flex-col justify-between hero-gradient" onload="verificarBotonSesión()">
-
-    <header class="header-bg shadow-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-amber-600 p-2 rounded-lg text-white">
-                    <i data-lucide="gavel" class="w-6 h-6"></i>
-                </div>
-                <span class="text-2xl font-black tracking-wider text-white">CONSTRU<span class="text-amber-500">GLOBAL</span></span>
-            </div>
-
-            <div id="contenedor-boton-auth">
-                <a href="registro.html" class="bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 px-5 py-2 rounded-xl text-sm font-bold transition flex items-center space-x-2 shadow-md">
-                    <i data-lucide="user-check" class="w-4 h-4 text-amber-500"></i>
-                    <span>Iniciar Sesión / Registro</span>
-                </a>
+<body>
+	
+    <header class="hero">
+        <nav class="navbar-pro">
+            <div class="logo">CONSTRU<span>GLOBAL</span></div>
+        </nav>
+        <div class="hero-content">
+            <h1>Soluciones Maestras en <br><span>Infraestructura</span></h1>
+            <p>Suministros de alta resistencia para proyectos residenciales e industriales.</p>
+            <div class="actions">
+                <button onclick="irATienda()" class="btn-main">Entrar al Catálogo</button>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
-            
-            <div class="space-y-6">
-                <div class="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/30 text-amber-500 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">
-                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-                    <span>Distribuidor Mayorista Autorizado</span>
-                </div>
-                
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none">
-                    Soluciones Maestras en <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-600">Infraestructura</span>
-                </h1>
-                
-                <p class="text-slate-400 text-base md:text-lg max-w-xl">
-                    Suministros de alta resistencia y logística directa optimizados para proyectos residenciales, comerciales e industriales.
-                </p>
-                
-                <div class="pt-2">
-                    <button onclick="accederAlCatalogo()" class="inline-flex items-center space-x-3 bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg hover:shadow-amber-600/20 text-base group">
-                        <span>Entrar al Catálogo</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="flex justify-center relative">
-                <div class="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-blue-500/10 blur-3xl rounded-full"></div>
-                <div class="relative bg-slate-900/60 border border-slate-800 p-8 rounded-2xl shadow-2xl backdrop-blur-sm w-full max-w-md text-center space-y-4">
-                    <div class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mx-auto border border-amber-500/20 shadow-inner">
-                        <i data-lucide="building-2" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white">Suministro Inteligente</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
-                        Gestiona cotizaciones, visualiza disponibilidad de inventario en tiempo real y descarga tickets autorizados al instante de manera segura.
-                    </p>
-                    <div class="grid grid-cols-3 gap-2 pt-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                        <div class="bg-slate-950/50 p-2 rounded-lg border border-slate-800">Calidad</div>
-                        <div class="bg-slate-950/50 p-2 rounded-lg border border-slate-800">Rapidez</div>
-                        <div class="bg-slate-950/50 p-2 rounded-lg border border-slate-800">Garantía</div>
-                    </div>
-                </div>
-            </div>
+    <section class="info-section">
+        <div class="card-info">
+            <h3>Materiales Premium</h3>
+            <p>Seleccionamos solo lo mejor para asegurar la integridad de tu obra.</p>
         </div>
-
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/60">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-extrabold text-white">Nuestra Identidad <span class="text-amber-500">Corporativa</span></h2>
-                <p class="text-slate-400 text-sm mt-2">Respaldando la solidez de cada obra con valores firmes.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 space-y-3">
-                    <div class="text-amber-500"><i data-lucide="target" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold text-slate-200">Nuestra Misión</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
-                        Proveer materiales y herramientas de construcción con los más altos estándares de resistencia, garantizando una cadena de suministro ágil que optimice los tiempos de ejecución de nuestros clientes.
-                    </p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 space-y-3">
-                    <div class="text-amber-500"><i data-lucide="eye" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold text-slate-200">Nuestra Visión</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
-                        Consolidarnos como la plataforma digital líder en distribución de insumos estructurales a nivel nacional, reconocida por nuestra transparencia tecnológica, logística impecable e innovación constante.
-                    </p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 space-y-3">
-                    <div class="text-amber-500"><i data-lucide="heart" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold text-slate-200">Valores Fundamentales</h3>
-                    <ul class="text-slate-400 text-xs space-y-1.5 list-disc list-inside">
-                        <li><strong class="text-slate-300">Integridad:</strong> Transparencia en costos y cubicajes.</li>
-                        <li><strong class="text-slate-300">Calidad Certificada:</strong> Materiales bajo normas oficiales.</li>
-                        <li><strong class="text-slate-300">Compromiso:</strong> Puntualidad exacta en zona de obra.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-slate-900/30 border-y border-slate-800/80 py-12 mb-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="text-3xl md:text-4xl font-black text-amber-500">+150K</div>
-                    <div class="text-xs uppercase tracking-wider text-slate-400 font-bold mt-1">Toneladas Entregadas</div>
-                </div>
-                <div>
-                    <div class="text-3xl md:text-4xl font-black text-white">99.4%</div>
-                    <div class="text-xs uppercase tracking-wider text-slate-400 font-bold mt-1">Puntualidad de Envío</div>
-                </div>
-                <div>
-                    <div class="text-3xl md:text-4xl font-black text-amber-500">35</div>
-                    <div class="text-xs uppercase tracking-wider text-slate-400 font-bold mt-1">Insumos Críticos Básicos</div>
-                </div>
-                <div>
-                    <div class="text-3xl md:text-4xl font-black text-white">+2,500</div>
-                    <div class="text-xs uppercase tracking-wider text-slate-400 font-bold mt-1">Proyectos Financiados</div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <section class="border-t border-slate-800 bg-slate-900/40 backdrop-blur-md py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="card-caracteristica p-6 rounded-2xl flex items-start space-x-4">
-                <div class="bg-amber-500/10 text-amber-500 p-3 rounded-xl border border-amber-500/20">
-                    <i data-lucide="package" class="w-6 h-6"></i>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold text-white mb-1">Materiales Premium</h3>
-                    <p class="text-slate-400 text-sm">Seleccionamos cuidadosamente solo lo mejor para asegurar la máxima integridad y durabilidad en cada una de tus obras.</p>
-                </div>
-            </div>
-
-            <div class="card-caracteristica p-6 rounded-2xl flex items-start space-x-4">
-                <div class="bg-blue-500/10 text-blue-400 p-3 rounded-xl border border-blue-500/20">
-                    <i data-lucide="truck" class="w-6 h-6"></i>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold text-white mb-1">Logística Directa</h3>
-                    <p class="text-slate-400 text-sm">Entregamos los insumos y herramientas pesadas directamente en la zona de construcción de manera coordinada y puntual.</p>
-                </div>
-            </div>
+        <div class="card-info">
+            <h3>Logística Directa</h3>
+            <p>Entregamos directamente en tu zona de construcción.</p>
         </div>
     </section>
 
-    <script>
-        lucide.createIcons();
-
-        // Función para validar si el usuario ya inició sesión
-        function accederAlCatalogo() {
-            const sesionActiva = localStorage.getItem("usuario_logeado"); // O la variable que uses en tu registro.html
-
-            if (sesionActiva) {
-                // Si la sesión existe, redirige sin problemas
-                window.location.href = "tienda.html";
-            } else {
-                // Si intenta saltarse el flujo, bloquea la acción con SweetAlert2 corporativo
-                Swal.fire({
-                    title: '<span style="color: #ffffff;">Acceso Restringido</span>',
-                    html: '<p style="color: #94a3b8; font-size: 0.95rem;">Para visualizar los precios y añadir materiales al carrito, es necesario crear una cuenta o iniciar sesión.</p>',
-                    icon: 'warning',
-                    iconColor: '#d97706',
-                    background: '#1e293b',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d97706',
-                    cancelButtonColor: '#334155',
-                    confirmButtonText: 'Ir a Iniciar Sesión',
-                    cancelButtonText: 'Permanecer aquí',
-                    customClass: {
-                        popup: 'border border-slate-700 rounded-2xl shadow-xl'
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "registro.html";
-                    }
-                });
-            }
-        }
-
-        // Cambia el botón superior si detecta que ya inició sesión para mejorar UX
-        function verificarBotonSesión() {
-            const sesionActiva = localStorage.getItem("usuario_logeado");
-            if (sesionActiva) {
-                document.getElementById("contenedor-boton-auth").innerHTML = `
-                    <div class="flex items-center space-x-4">
-                        <span class="text-xs text-slate-400">Sesión de: <strong class="text-slate-200">${sesionActiva}</strong></span>
-                        <button onclick="cerrarSesionIndex()" class="bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-900/50 px-4 py-2 rounded-xl text-sm font-bold transition">
-                            Cerrar Sesión
-                        </button>
-                    </div>
-                `;
-            }
-        }
-
-        function cerrarSesionIndex() {
-            localStorage.removeItem("usuario_logeado");
-            window.location.reload();
-        }
-    </script>
+    <script src="sistema-logica.js"></script>
 </body>
 </html>
