@@ -50,3 +50,29 @@ body { background: var(--bg); color: var(--dark); }
 .summary-box { background: var(--dark); color: white; padding: 30px; border-radius: 15px; text-align: center; position: sticky; top: 100px; }
 .total-amount { font-size: 2.5rem; margin: 20px 0; color: var(--accent); font-weight: bold; }
 .btn-confirm { background: var(--accent); color: white; border: none; width: 100%; padding: 15px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+
+.contenedor-buscador{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:16px;
+    margin:20px auto 40px auto;
+    max-width:700px;
+}
+
+.contenedor-buscador input{
+    flex:1;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    font-size:16px;
+}
+
+.contenedor-buscador button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#1e3a8a;
+    color:white;
+}

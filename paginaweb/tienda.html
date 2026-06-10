@@ -18,31 +18,22 @@
         </div>
     </nav>
 
-    <main class="container">
-        <header class="section-header">
-            <h2>Materiales de Construcción</h2>
-            <p>Añade los suministros necesarios para tu presupuesto.</p>
-        </header>
-        
-        <div class="product-grid" id="lista-productos">
-            <!-- Cargado por JS -->
-        </div>
-    </main>
 
-    <script src="sistema-logica.js"></script>
-    <div style="margin: 20px 0; display: flex; gap: 10px;">
+    <main class="container">
+    <header class="section-header">
+        <h2>Materiales de Construcción</h2>
+        <p>Añade los suministros necesarios para tu presupuesto.</p>
+    </header>
+
+    <div class="contenedor-buscador">
         <input
             type="text"
             id="busqueda"
-            placeholder="Buscar material..."
-            style="flex:1; padding:10px; border-radius:5px; border:1px solid #ccc;"
-        >
-        <button
-            onclick="buscarProducto()"
-            class="btn-add"
-            style="width:auto; padding:10px 20px;"
-        >
-            Buscar
+            placeholder="Buscar producto..."
+            onkeyup="buscarProducto()">
+
+        <button onclick="buscarProducto()">
+            🔍 Buscar
         </button>
     </div>
 
@@ -50,5 +41,8 @@
         <!-- Cargado por JS -->
     </div>
 </main>
+
+<script src="sistema-logica.js"></script>
+    
 </body>
 </html>

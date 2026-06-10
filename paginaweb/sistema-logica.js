@@ -20,7 +20,7 @@ function irATienda() {
 }
 
 // Lógica de Tienda
-function renderizarTienda() {
+/*function renderizarTienda() {
     const listado = document.getElementById('lista-productos');
     if (!listado) return;
 
@@ -34,8 +34,21 @@ function renderizarTienda() {
         </div>
     `).join('');
     actualizarNotificacion();
-}
+}*/
+function renderizarTienda(productos = PRODUCTOS) {
+    const listado = document.getElementById('lista-productos');
+    if (!listado) return;
 
+    listado.innerHTML = productos.map(p => `
+        <div class="card-producto">
+            <div style="font-size: 3.5rem; margin-bottom: 10px;">${p.img}</div>
+            <h3>${p.nombre}</h3>
+            <p style="color: #64748b; margin: 5px 0;">Código: 00${p.id}</p>
+            <h4 style="color: #1e3a8a; font-size: 1.4rem;">$${p.precio.toFixed(2)}</h4>
+            <button class="btn-add" onclick="agregar(${p.id})">Añadir al Pedido</button>
+        </div>
+    `).join('');
+}
 function agregar(id) {
     const item = PRODUCTOS.find(p => p.id === id);
     carrito.push(item);
@@ -112,6 +125,5 @@ function buscarProducto() {
         p.nombre.toLowerCase().includes(texto)
     );
 
-    mostrarProductos(filtrados);
-
+    renderizarTienda(filtrados);
 }
