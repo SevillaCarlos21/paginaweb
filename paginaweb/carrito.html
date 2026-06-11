@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Carrito - ConstruGlobal</title>
+    <link rel="stylesheet" href="estilos-base.css">
+</head>
+<body onload="renderizarCarrito()">
+    <nav class="navbar-pro">
+        <a href="tienda.html" class="back-btn">← Volver al Catálogo</a>
+        <div class="logo">RESUMEN DE <span>COMPRA</span></div>
+    </nav>
+
+    <main class="container cart-container">
+        <div id="lista-carrito" class="cart-items-list">
+            <!-- Items dinámicos -->
+        </div>
+
+        <aside class="cart-checkout">
+            <div class="summary-box">
+                <h3>Total a Pagar</h3>
+                <div class="total-amount">$<span id="total-precio">0.00</span></div>
+                <button onclick="confirmarPedido()" class="btn-confirm">Confirmar y Enviar Pedido</button>
+            </div>
+        </aside>
+    </main>
+
+    <script src="sistema-logica.js"></script>
+</body>
+</html>
