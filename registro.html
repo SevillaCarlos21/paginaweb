@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso - ConstruGlobal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .auth-body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .auth-container { background: white; padding: 35px; border-radius: 12px; width: 100%; max-width: 450px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .form-control { width: 100%; padding: 12px; border: 2px solid #cbd5e1; border-radius: 8px; margin-bottom: 15px; }
+        .tab-btn { flex: 1; padding: 10px; font-weight: bold; color: #64748b; border-bottom: 3px solid transparent; transition: 0.3s; }
+        .tab-btn.active { color: #1e40af; border-bottom-color: #1e40af; }
+    </style>
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <h2 class="text-2xl font-black text-center mb-6">CONSTRU<span class="text-amber-600">GLOBAL</span></h2>
+        
+        <div class="flex mb-6 border-b border-gray-200">
+            <button id="btn-login-tab" class="tab-btn active" onclick="mostrarForm('login')">Iniciar Sesión</button>
+            <button id="btn-reg-tab" class="tab-btn" onclick="mostrarForm('registro')">Registrarse</button>
+        </div>
+
+        <form id="form-login" onsubmit="procesarAuth(event, 'login')">
+            <input type="email" id="login-correo" class="form-control" placeholder="Correo electrónico" required>
+            <input type="password" class="form-control" placeholder="Contraseña" required>
+            <button type="submit" class="w-full bg-amber-600 text-white py-3 rounded-lg font-bold">Ingresar</button>
+        </form>
+
+        <form id="form-registro" onsubmit="procesarAuth(event, 'registro')" style="display: none;">
+            <input type="text" id="reg-nombre" class="form-control" placeholder="Nombre Completo" required>
+            <input type="email" id="reg-correo" class="form-control" placeholder="Correo electrónico" required>
+            <input type="password" class="form-control" placeholder="Contraseña" required>
+            <button type="submit" class="w-full bg-blue-700 text-white py-3 rounded-lg font-bold">Crear Cuenta</button>
+        </form>
+    </div>
+
+    <script>
+        function mostrarForm(tipo) {
+            const login = document.getElementById('form-login');
+            const registro = document.getElementById('form-registro');
+            const btnLogin = document.getElementById('btn-login-tab');
+            const btnReg = document.getElementById('btn-reg-tab');
+
+            if (tipo === 'login') {
+                login.style.display = 'block';
+                registro.style.display = 'none';
+                btnLogin.classList.add('active');
+                btnReg.classList.remove('active');
+            } else {
+                login.style.display = 'none';
+                registro.style.display = 'block';
+                btnReg.classList.add('active');
+                btnLogin.classList.remove('active');
+            }
+        }
+
+        function procesarAuth(event, tipo) {
+            event.preventDefault();
+            const correo = tipo === 'login' ? document.getElementById('login-correo').value : document.getElementById('reg-correo').value;
+            const nombre = tipo === 'registro' ? document.getElementById('reg-nombre').value : "Usuario";
+            
+            const usuario = {
+                nombre: nombre,
+                rol: (correo === "admin@constru.com") ? "admin" : "cliente"
+            };
+            
+            localStorage.setItem("usuario_logeado", JSON.stringify(usuario));
+
+            if (usuario.rol === "admin") {
+                window.location.href = "admin.html";
+            } else {
+                window.location.href = "tienda.html";
+            }
+        }
+    </script>
+</body>
+</html>

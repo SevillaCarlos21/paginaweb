@@ -1,52 +1,503 @@
+/* =========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL (Reset)
+   ========================================================================= */
 :root {
-    /*cambio de fondo color */
-    --primary: #1e3a8a;
-    --accent: #d97706;
-    --bg: #0f172a;
-    --dark: #0f172a;
-    --white: #ffffff;
+    --primary: #1e3a8a;       /* Azul Corporativo */
+    --primary-hover: #1e40af; /* Azul de selección */
+    --accent: #d97706;        /* Ámbar / Naranja Global */
+    --accent-hover: #b45309;  /* Ámbar Oscuro */
+    --bg-light: #f8fafc;      /* Fondo Claro de Tienda y Carrito */
+    --text-dark: #0f172a;     /* Texto Principal Oscuro */
+    --border-color: #e2e8f0;  /* Bordes sutiles */
+    --card-bg: #ffffff;       /* Fondo de Tarjetas */
 }
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-body { background: var(--bg); color: var(--dark); }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-/* NAVBAR */
-.navbar-pro { background: var(--dark); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: bold; font-size: 1.4rem; letter-spacing: 1px; }
-.logo span { color: var(--accent); }
-.sticky { position: sticky; top: 0; z-index: 100; }
-.cart-widget { color: var(--accent); text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 20px; }
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
 
-/* HERO */
-.hero { 
-    height: 100vh; 
-    /* Cambiamos la URL por una de un edificio moderno en construcción */
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070'); 
-    background-size: cover; 
-    background-position: center;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+/* =========================================================================
+   2. DISEÑO DE LA PÁGINA DE INICIO (INDEX.HTML)
+   ========================================================================= */
+/* El Header ocupa toda la pantalla con el fondo oscuro corporativo */
+header.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 0 5%;
+}
+
+/* Barra de navegación interna del Hero */
+.navbar-pro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-pro .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+.navbar-pro .logo span {
+    color: var(--accent);
+}
+
+/* Contenido del Hero (Títulos y botones) */
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 700px;
+    padding: 40px 0;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 span {
+    color: #ffffff;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+/* Botón Principal "Entrar al Catálogo" */
+.btn-main {
+    background-color: #ffffff;
+    color: #0f172a;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.btn-main:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+/* Sección de Tarjetas Informativas Inferiores */
+.info-section {
+    background-color: #0f172a;
+    display: flex;
+    gap: 30px;
+    padding: 40px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-info {
+    flex: 1;
+    color: white;
+}
+
+.card-info h3 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.card-info p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .info-section { flex-direction: column; gap: 20px; }
+    .hero-content h1 { font-size: 2.2rem; }
+}
+
+/* =========================================================================
+   3. CATÁLOGO DE PRODUCTOS (VISTA VERDE VIBRANTE)
+   ========================================================================= */
+.contenedor-tienda {
+    background-color: #00e640; /* Verde brillante característico */
+    padding: 40px 5%;
+    min-height: 100vh;
+}
+
+.titulo-seccion h2 {
+    font-size: 2.2rem;
+    color: #0f172a;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.titulo-seccion p {
+    color: #0f172a;
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.card-producto {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s;
+}
+
+.card-producto:hover {
+    transform: translateY(-4px);
+}
+
+.contenedor-img-producto {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.img-material {
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.card-producto h3 {
+    font-size: 1.2rem;
+    color: #0f172a;
+    font-weight: bold;
+}
+
+.card-producto .codigo {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin: 4px 0;
+}
+
+.card-producto .precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin: 8px 0;
+}
+
+.btn-add {
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #1e40af;
+}
+
+.bar-busqueda {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.input-buscar {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.btn-buscar {
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================================================================
+   4. VISTA DEL CARRITO / RESUMEN DE COMPRA
+   ========================================================================= */
+.contenedor-carrito-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.cart-item {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+}
+
+.resumen-card {
+    background: #0f172a;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    height: fit-content;
+}
+
+.btn-checkout {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 14px 0;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* =========================================================================
+   5. DISEÑO PREMIUM PARA EL TICKET DE COMPRA (Cohesivo y Acoplado)
+   ========================================================================= */
+/* Ajuste para el fondo de pantalla completo detrás del ticket */
+.ticket-body {
+    background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%) !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Contenedor principal del Ticket con estética de tarjeta corporativa */
+.ticket-box {
+    background: #1e293b !important; 
+    max-width: 520px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 8px solid #d97706; /* Línea de acento naranja */
+    color: #f8fafc !important;
+}
+
+.ticket-header { 
     text-align: center; 
-    color: white; 
+    border-bottom: 2px dashed #334155; 
+    padding-bottom: 20px; 
+    margin-bottom: 20px; 
 }
-.hero h1 span { color: var(--accent); }
-.btn-main { background: var(--accent); color: white; border: none; padding: 15px 40px; border-radius: 5px; font-size: 1.1rem; cursor: pointer; margin-top: 20px; transition: 0.3s; }
-.btn-main:hover { background: #b45309; }
 
-/* PRODUCTOS */
-.container { max-width: 1100px; margin: 3rem auto; padding: 0 20px; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
-.card-producto { background: white; padding: 25px; border-radius: 12px; text-align: center; border-bottom: 4px solid var(--primary); transition: 0.3s; }
-.card-producto:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-.btn-add { background: var(--primary); color: white; border: none; width: 100%; padding: 10px; margin-top: 15px; border-radius: 5px; cursor: pointer; }
+.ticket-meta { 
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 0.9rem; 
+    color: #94a3b8; 
+    margin-bottom: 10px; 
+}
 
-/* CARRITO */
-.cart-container { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-.cart-item { background: white; padding: 20px; margin-bottom: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.btn-remove { background: #fee2e2; color: #b91c1c; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; }
-.summary-box { background: var(--dark); color: white; padding: 30px; border-radius: 15px; text-align: center; position: sticky; top: 100px; }
-.total-amount { font-size: 2.5rem; margin: 20px 0; color: var(--accent); font-weight: bold; }
-.btn-confirm { background: var(--accent); color: white; border: none; width: 100%; padding: 15px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+.ticket-meta span strong { 
+    color: #e2e8f0; 
+}
+
+/* Corrección de color en identificadores dinámicos (Remueve el subrayado azul) */
+#folio-ticket, #fecha-ticket {
+    color: #38bdf8 !important; /* Azul cielo nítido de alta legibilidad */
+    text-decoration: none !important;
+    font-weight: 600;
+}
+
+/* Estructura de la Tabla del Ticket */
+.ticket-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0 15px 0;
+}
+
+/* Encabezados de la tabla (MATERIAL / TOTAL) */
+.ticket-table th {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #d97706 !important; /* Tono ámbar premium */
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 10px 14px;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+/* Filas dinámicas de los materiales comprados */
+.ticket-table td {
+    padding: 14px;
+    color: #e2e8f0 !important; /* Letra clara sobre el fondo azul marino */
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ticket-table tr:last-child td {
+    border-bottom: none;
+}
+
+.ticket-table td:last-child {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Bloque final del monto */
+.ticket-total { 
+    text-align: right; 
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    margin-top: 20px; 
+    padding-top: 15px; 
+    border-top: 2px dashed #334155; 
+    color: #ffffff; 
+}
+
+#total-monto-ticket {
+    color: #00e640 !important; /* Verde vibrante acoplado a tus KPI de éxito */
+}
+
+/* Botonera inferior de acciones */
+.ticket-actions { 
+    display: flex; 
+    gap: 15px; 
+    margin-top: 30px; 
+}
+
+.btn-print { 
+    background: #d97706; 
+    color: white; 
+    border: none; 
+    padding: 14px; 
+    border-radius: 8px; 
+    width: 100%; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 1rem; 
+    transition: background 0.2s; 
+}
+
+.btn-print:hover { 
+    background: #b45309; 
+}
+
+.btn-return { 
+    background: rgba(255, 255, 255, 0.1); 
+    color: #ffffff; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    padding: 14px; 
+    border-radius: 8px; 
+    width: 100%; 
+    cursor: pointer; 
+    font-weight: bold; 
+    text-align: center; 
+    font-size: 1rem; 
+    transition: background 0.2s; 
+}
+
+.btn-return:hover { 
+    background: rgba(255, 255, 255, 0.2); 
+}
+
+/* =========================================================================
+   6. LIMPIEZA DE ENTORNO PANEL ADMINISTRADOR
+   ========================================================================= */
+/* Elimina el bloque azul de fondo en el texto del historial */
+.historial-section h2, 
+.historial-section h3, 
+#Historial-titulo {
+    color: #ffffff !important;
+    background: transparent !important; 
+    padding: 10px 0;
+}
+
+/* =========================================================================
+   7. CONFIGURACIÓN EXCLUSIVA PARA IMPRESIÓN (PDF / PAPEL)
+   ========================================================================= */
+@media print { 
+    .ticket-actions { display: none; } 
+    .ticket-box { 
+        background: white !important; 
+        color: #0f172a !important; 
+        box-shadow: none; 
+        padding: 0; 
+        border: none;
+    } 
+    .ticket-body { background: white !important; }
+    .ticket-table th { background-color: #f1f5f9; color: #0f172a !important; }
+    .ticket-table td { color: #334155 !important; border-bottom: 1px solid #e2e8f0; }
+    #total-monto-ticket { color: #1e3a8a !important; }
+    #folio-ticket, #fecha-ticket { color: #0f172a !important; }
+}
+
+/* =========================================================================
+   8. ESTILOS ADICIONALES PARA EL BUSCADOR DE PRODUCTOS (INTEGRACIÓN CON CATÁLOGO)
+   ========================================================================= */
+.contenedor-buscador{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:16px;
+    margin:20px auto 40px auto;
+    max-width:700px;
+}
+
+.contenedor-buscador input{
+    flex:1;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    font-size:16px;
+}
+
+.contenedor-buscador button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#1e3a8a;
+    color:white;
+}
