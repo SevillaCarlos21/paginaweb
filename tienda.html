@@ -88,6 +88,20 @@
                 Buscar
             </button>
         </div>
+        <div class="filtros-categoria" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
+            <button onclick="filtrarPorCategoria('Todos')" class="btn-cat">Todos</button>
+            <button onclick="filtrarPorCategoria('Construcción')" class="btn-cat">Construcción</button>
+            <button onclick="filtrarPorCategoria('Acabados')" class="btn-cat">Acabados</button>
+            <button onclick="filtrarPorCategoria('Herramientas')" class="btn-cat">Herramientas</button>
+            <button onclick="filtrarPorCategoria('Instalaciones')" class="btn-cat">Instalaciones</button>
+            <button onclick="filtrarPorCategoria('Ferretería')" class="btn-cat">Ferretería</button>
+            <button onclick="filtrarPorCategoria('Accesorios')" class="btn-cat">Accesorios</button>
+        </div>
+
+<style>
+    .btn-cat { background: #334155; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+    .btn-cat:hover { background: #d97706; }
+</style>
 
         <div id="grid-productos" class="grid-productos"></div>
         
