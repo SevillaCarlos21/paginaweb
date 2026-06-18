@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-// Base de datos de materiales
-const PRODUCTOS = [
-    { id: 1, nombre: "Cemento Gris (50kg)", precio: 190.00, img: "🏗️" },
-    { id: 2, nombre: "Varilla de Acero 3/8", precio: 225.50, img: "🦯" },
-    { id: 3, nombre: "Bulto Cal Hidratada", precio: 145.00, img: "🌫️" },
-    { id: 4, nombre: "Block de Concreto (Pza)", precio: 14.50, img: "🧱" },
-    { id: 5, nombre: "Arena de Mina (m3)", precio: 460.00, img: "⏳" },
-    { id: 6, nombre: "Grava Triturada (m3)", precio: 510.00, img: "🪨" },
-    { id: 7, nombre: "Ladrillo rojo (Pza)", precio: 15.40, img: "🧱" },
-    { id: 8, nombre: "Martillo Cabeza Concreto (Pza)", precio: 70.00, img: "🔨" },
-    { id: 9, nombre: "Yeso", precio: 120.00, img: "☁️" },
-    { id: 10, nombre: "Madera de Pino", precio: 350.00, img: "🪵" },
-    { id: 11, nombre: "Tubo PVC", precio: 95.00, img: "🚰" },
-    { id: 12, nombre: "Cable Eléctrico", precio: 180.00, img: "🔌" },
-    { id: 13, nombre: "Pintura Blanca", precio: 280.00, img: "🎨" },
-    { id: 14, nombre: "Impermeabilizante", precio: 850.00, img: "☔" },
-    { id: 15, nombre: "Teja", precio: 28.00, img: "🏠" },
-    { id: 16, nombre: "Malla Electrosoldada", precio: 650.00, img: "🕸️" },
-    { id: 17, nombre: "Alambre Recocido", precio: 75.00, img: "🧵" },
-    { id: 18, nombre: "Clavos", precio: 45.00, img: "📌" },
-    { id: 19, nombre: "Tornillos", precio: 55.00, img: "🔩" },
-    { id: 20, nombre: "Martillo", precio: 70.00, img: "🔨" },
-    { id: 21, nombre: "Cinta Métrica", precio: 35.00, img: "📏" },
-    { id: 22, nombre: "Nivel", precio: 120.00, img: "📐" },
-    { id: 23, nombre: "Pala", precio: 180.00, img: "⛏️" },
-    { id: 24, nombre: "Carretilla", precio: 950.00, img: "🛒" },
-    { id: 25, nombre: "Vidrio", precio: 450.00, img: "🪟" },
-    { id: 26, nombre: "Puerta Metálica", precio: 2800.00, img: "🚪" },
-    { id: 27, nombre: "Cinta Métrica 5m (Pza)", precio: 35.00, img: "📏" }
-=======
- // =========================================================================
-// 1. BASE DE DATOS LOCAL (Tus 35 Materiales Originales e Identificados)
-// =========================================================================
-// =========================================================================
 // 1. BASE DE DATOS (Lista Completa)
 // =========================================================================
 const listaBaseMateriales = [
@@ -103,7 +68,7 @@ const listaBaseMateriales = [
     { id: 61, nombre: "Vidrio", precio: 450.00, img: "https://thfvnext.bing.com/th/id/OIP.Vh1PD-5Qzj2Lm8UF4CvyrwHaE5", estado: "Disponible", categoria: "Accesorios" },
     { id: 62, nombre: "Puerta metálica", precio: 2800.00, img: "https://tse4.mm.bing.net/th/id/OIP.Q1slhezoABA6j9Z18sfhwwHaJ4", estado: "Disponible", categoria: "Accesorios" },
     { id: 63, nombre: "Ventana", precio: 1200.00, img: "https://cdn.homedepot.com.mx/productos/151377/151377-a1.jpg", estado: "Disponible", categoria: "Accesorios" }
->>>>>>> a7c4b1d544ae057df517a1c26fa8b2a7a7bae6b9
+
 ];
 
 // Asignamos la lista a la variable global 'materiales'
@@ -113,7 +78,7 @@ let materiales = listaBaseMateriales;
 // 2. FUNCIONES DE RENDERIZADO Y FILTRO
 // =========================================================================
 
-function renderizarCatalogo(lista) {
+/*function renderizarCatalogo(lista) {
     const grid = document.getElementById("grid-productos");
     if (!grid) return;
 
@@ -189,7 +154,7 @@ function renderizarCatalogo(listaProductos) {
         `;
         grid.appendChild(card);
     });
-}
+}*/
 
 // =========================================================================
 // 2. LÓGICA DE LA TIENDA Y CATÁLOGO (VISTA USUARIO)
